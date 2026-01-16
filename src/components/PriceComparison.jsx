@@ -31,6 +31,7 @@ const PriceComparison = () => {
     if (selectedRegions.length > 0) {
       loadComparison();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedRegions]);
 
   const loadComparison = async () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { getCurrentPrices } from '../services/priceService';
 
@@ -14,7 +14,6 @@ L.Icon.Default.mergeOptions({
 const MapView = () => {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selectedRegion, setSelectedRegion] = useState(null);
 
   useEffect(() => {
     loadRegionData();
@@ -86,9 +85,6 @@ const MapView = () => {
             key={region.id}
             position={region.coordinates}
             icon={createCustomIcon(region.currentPrice.price)}
-            eventHandlers={{
-              click: () => setSelectedRegion(region),
-            }}
           >
             <Popup>
               <div className="p-2">
